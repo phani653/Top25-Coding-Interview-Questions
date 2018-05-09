@@ -1,0 +1,14 @@
+vector<int> Solution::spiralOrder(const vector<vector<int> > &A) {
+    vector<int> ans;
+    int n=A.size(), m=A[0].size();
+    int total=0, i=0, j=0, g=1, row=n, col=m;
+    while(total<n*m){
+        for(int ind=0;ind<col;ind++,total++,j+=g) ans.push_back(A[i][j]);
+        j-=g; i+=g;  row--;
+        if(total>=n*m) break;
+        for(int ind=0;ind<row;total++,ind++,i+=g) ans.push_back(A[i][j]);
+        i-=g; j-=g;  col--; g*=-1;
+    }
+    return ans;
+}
+ 
