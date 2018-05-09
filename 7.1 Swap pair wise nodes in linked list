@@ -1,0 +1,13 @@
+ListNode* swapPairs(ListNode* head) {
+        if(!head or !head->next) return head;
+        ListNode *t1=NULL, *t2=NULL, *curr=head;
+        while(curr && curr->next){
+            if(t1) t1->next->next= curr->next;
+            t1= curr->next;
+            curr->next=curr->next->next;
+            t1->next= curr;
+            if(!t2) t2=t1;
+            curr=curr->next;
+        }
+        return t2;
+    }
